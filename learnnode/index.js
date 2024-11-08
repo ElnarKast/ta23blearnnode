@@ -1,4 +1,3 @@
-import common from './common.js'
-common.hello();
-import es from './es.js';
-es.hello();
+import chalk from "chalk";
+
+console.log(calhk.green('Hello world'))
