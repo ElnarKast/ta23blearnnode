@@ -1,4 +1,6 @@
-import common from './common.js'
-common.hello();
-import es from './es.js';
-es.hello();
+//import common from './common.js'
+//common.hello();
+//import es from './es.js';
+//es.hello();
+
+const common
