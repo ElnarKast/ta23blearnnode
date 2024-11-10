@@ -1,5 +1,6 @@
 import path from "path";
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import loader from "sass-loader";
 
 const __filename = import.meta.filename;
 const __dirname = import.meta.dirname;
@@ -38,11 +39,24 @@ export default {
                     }
                 ],
              },
+             {
+                test: /\.njk$/,
+                use: [
+                    {
+                        loader: 'simple-nunjucks-loader',
+                        options: {}
+                    }
+                ]
+             }
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: './src/index.njk',
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/about.njk',
+            filename: 'about.html'
         }),
     ],
 };
