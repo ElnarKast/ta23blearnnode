@@ -1,6 +1,6 @@
 <script setup>
 import axios from 'axios';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import CharacterCard from '../components/CharacterCard.vue';
 import PagedPagination from '../components/PagedPagination.vue';
 
@@ -13,7 +13,8 @@ let currentPage = ref(1);
 async function getCharacters(url) {
     let response = await axios.get(url);
     console.log(response.data);
-    characters.value = response.data.results;
+    characters.value.push(...response.data.results);
+    console.log(characters.value);
     pagination.value = response.data.info;
 }
 
@@ -33,10 +34,22 @@ async function page(page){
      await getCharacters('https://rickandmortyapi.com/api/character?page=' + page);
  }
  
+ onMounted(() => {
+     document.addEventListener('scroll', () => {
+         if(window.scrollY+window.innerHeight > document.body.clientHeight-300 ) {
+             if(pagination.value.next){
+                 next()
+             }
+             
+         }
+         //console.log(document.body.clientHeight, window.scrollY+window.innerHeight);
+     });
+ });
+ 
+
 </script>
 
 <template>
-    <PagedPagination :pagination="pagination" :current="currentPage" @next="next" @prev="prev" @page="page"></PagedPagination>
     <div class="columns is-multiline">
         <div class="column is-one-quarter" v-for="character in characters">
             <CharacterCard :character="character"></CharacterCard>
