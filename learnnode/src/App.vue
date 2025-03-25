@@ -6,9 +6,12 @@ import RouterTabs from './components/RouterTabs.vue';
     <Suspense>
         <RouterView></RouterView>
     </Suspense>
-    <div class="container">
+    <div class="container" v-if="$route.meta.container === undefined">
         <section class="section">
             <RouterView></RouterView>
         </section>
     </div>
+    <Suspense v-else>
+         <RouterView></RouterView>
+    </Suspense>
 </template>

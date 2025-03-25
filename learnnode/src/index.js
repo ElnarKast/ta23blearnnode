@@ -14,7 +14,7 @@ const routes = [
   { path: '/modals', component: Modals, name: 'Modals' },
   { path: '/chuck', component: ChuckNorris, name: 'Chuck Norris' },
   { path: '/rickandmorty', component: RickAndMorty, name: 'Rick And Morty' },
-  { path: '/cookieclicker', component: CookieClicker, name: 'Cookie Clicker' },
+  { path: '/cookieclicker', component: CookieClicker, name: 'Cookie Clicker', meta: { container: false } },
 ];
 
 const router = createRouter({
