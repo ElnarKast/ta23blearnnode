@@ -2,12 +2,16 @@ import './style.scss';
 
 import { createApp } from 'vue';
 import { createWebHashHistory, createWebHistory, createMemoryHistory, createRouter } from 'vue-router';
+
 import App from './App.vue';
+
 import ToDo from './pages/ToDo.vue';
 import Modals from './pages/Modals.vue';
 import ChuckNorris from './pages/ChuckNorris.vue';
 import RickAndMorty from './pages/RickAndMorty.vue';
 import CookieClicker from './pages/CookieClicker.vue';
+import Vibration from './pages/Vibration.vue';
+import Chat from './pages/Chat.vue';
 
 const routes = [
   { path: '/', component: ToDo, name: 'ToDo' },
@@ -15,6 +19,8 @@ const routes = [
   { path: '/chuck', component: ChuckNorris, name: 'Chuck Norris' },
   { path: '/rickandmorty', component: RickAndMorty, name: 'Rick And Morty' },
   { path: '/cookieclicker', component: CookieClicker, name: 'Cookie Clicker', meta: { container: false } },
+  { path: '/vibration', component: Vibration, name: 'Vibration' },
+  { path: '/chat', component: Chat, name: 'Chat' },
 ];
 
 const router = createRouter({
