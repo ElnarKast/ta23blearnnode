@@ -4,10 +4,19 @@
  
  let message = ref('');
  let messages = ref([]);
+ let lastMessageDate = null;
  // polling
  setInterval(async () => {
-     let res = await axios.get('http://localhost:3000/messages');
-     messages.value = res.data;
+    let res = await axios.get('http://localhost:3000/messages', {
+         params: {
+             date: lastMessageDate
+         }
+     });
+     messages.value.push(...res.data);
+     if(res.data.length > 0){
+         let lastMessage = res.data[res.data.length-1];
+         lastMessageDate = lastMessage.date;
+     }
  }, 1000);
  
  
@@ -16,7 +25,6 @@
          message: message.value
      });
      message.value = '';
-     messages.value.push(res.data);
  }
  </script>
  

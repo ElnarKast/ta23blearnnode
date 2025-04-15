@@ -3,15 +3,15 @@ import { ref } from 'vue';
 import RouterTabs from './components/RouterTabs.vue';
 </script>
 <template>
-    <Suspense>
-        <RouterView></RouterView>
-    </Suspense>
+    <RouterTabs></RouterTabs>
     <div class="container" v-if="$route.meta.container === undefined">
         <section class="section">
-            <RouterView></RouterView>
+            <Suspense>
+                <RouterView></RouterView>
+            </Suspense>
         </section>
     </div>
     <Suspense v-else>
-         <RouterView></RouterView>
+        <RouterView></RouterView>
     </Suspense>
 </template>

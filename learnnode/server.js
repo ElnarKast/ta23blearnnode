@@ -14,12 +14,13 @@ import express from 'express';
  });
  
  app.get('/messages', (req, res) => {
-   res.json(messages);
+  let filteredMessages = messages.filter(msg => msg.date > new Date(req.query.date ?? null));
+  res.json(filteredMessages);
  });
  
  
  app.post('/messages', (req, res) => {
-     messages.push(req.body);
+  messages.push({ message: req.body.message, date: new Date()});
      res.json(req.body);
  });
    
